@@ -1,19 +1,22 @@
 package com.aws.connect;
 
-
-import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.auth.credentials.*;
 import software.amazon.awssdk.services.connect.*;
 import software.amazon.awssdk.services.connect.model.CreateUserRequest;
 import software.amazon.awssdk.services.connect.model.UserPhoneConfig;
 import software.amazon.awssdk.services.connect.model.UserIdentityInfo;
 import software.amazon.awssdk.regions.Region;
  
-
 public class App 
 {
     public static void main( String[] args )
     {    
-    	ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
+    	   ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
+        //Java SDK V2默认用aws凭证文件授权，如果想在代码里传递AK/SK，改成下面这样
+        //AwsBasicCredentials credentials = AwsBasicCredentials.create(
+    			 //     "accesskey",
+    			 //     "securekey");
+     
         Region region = Region.US_WEST_2;
         ConnectClient connect = ConnectClient.builder()
             .region(region)
@@ -41,6 +44,5 @@ public class App
         		.build();
         
         connect.createUser(request);
-        
     }
 }
