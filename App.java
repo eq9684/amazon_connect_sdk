@@ -11,11 +11,11 @@ public class App
 {
     public static void main( String[] args )
     {    
-    	   ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
-        //Java SDK V2默认用aws凭证文件授权，如果想在代码里传递AK/SK，改成下面这样
-        //AwsBasicCredentials credentials = AwsBasicCredentials.create(
-    			 //     "accesskey",
-    			 //     "securekey");
+         ProfileCredentialsProvider credentialsProvider = ProfileCredentialsProvider.create();
+         //Java SDK V2默认用aws凭证文件授权，如果想在代码里传递AK/SK，改成下面这样
+         //AwsBasicCredentials credentials = AwsBasicCredentials.create(
+         //     "accesskey",
+         //     "securekey");
      
         Region region = Region.US_WEST_2;
         ConnectClient connect = ConnectClient.builder()
