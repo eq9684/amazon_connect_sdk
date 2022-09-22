@@ -27,7 +27,7 @@ public class App
     	    proxyConfig.username("");
     	    proxyConfig.password("");
 
-    	    ApacheHttpClient.Builder httpClientBuilder = ApacheHttpClient.builder()
+    	 ApacheHttpClient.Builder httpClientBuilder = ApacheHttpClient.builder()
     	        .proxyConfiguration(proxyConfig.build());
      
      
