@@ -6,7 +6,11 @@ import software.amazon.awssdk.services.connect.model.CreateUserRequest;
 import software.amazon.awssdk.services.connect.model.UserPhoneConfig;
 import software.amazon.awssdk.services.connect.model.UserIdentityInfo;
 import software.amazon.awssdk.regions.Region;
- 
+//引入proxy配置
+import software.amazon.awssdk.http.apache.ApacheHttpClient;
+import software.amazon.awssdk.http.apache.ProxyConfiguration;
+import java.net.URI;
+
 public class App 
 {
     public static void main( String[] args )
@@ -16,11 +20,22 @@ public class App
          //AwsBasicCredentials credentials = AwsBasicCredentials.create(
          //     "accesskey",
          //     "securekey");
+         
+         //配置Proxy参数
+         ProxyConfiguration.Builder proxyConfig = ProxyConfiguration.builder();
+    	    proxyConfig.endpoint(URI.create("http://18.162.125.199:8118"));
+    	    proxyConfig.username("");
+    	    proxyConfig.password("");
+
+    	    ApacheHttpClient.Builder httpClientBuilder = ApacheHttpClient.builder()
+    	        .proxyConfiguration(proxyConfig.build());
+     
      
          Region region = Region.US_WEST_2;
          ConnectClient connect = ConnectClient.builder()
              .region(region)
              .credentialsProvider(credentialsProvider)
+             .httpClientBuilder(httpClientBuilder)
              .build();
         
          UserPhoneConfig phoneconfig = UserPhoneConfig.builder()
