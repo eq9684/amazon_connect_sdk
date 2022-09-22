@@ -23,13 +23,13 @@ public class App
          
          //配置Proxy参数
          ProxyConfiguration.Builder proxyConfig = ProxyConfiguration.builder();
-    	    proxyConfig.endpoint(URI.create("http://18.162.125.199:8118"));
-    	    proxyConfig.username("");
-    	    proxyConfig.password("");
+    	     proxyConfig.endpoint(URI.create("http://18.162.125.199:8118"));
+    	     proxyConfig.username("");
+    	     proxyConfig.password("");
 
     	 ApacheHttpClient.Builder httpClientBuilder = ApacheHttpClient.builder()
-    	        .proxyConfiguration(proxyConfig.build());
-     
+    	     .proxyConfiguration(proxyConfig
+             .build());
      
          Region region = Region.US_WEST_2;
          ConnectClient connect = ConnectClient.builder()
