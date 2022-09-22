@@ -28,8 +28,7 @@ public class App
     	     proxyConfig.password("");
 
     	 ApacheHttpClient.Builder httpClientBuilder = ApacheHttpClient.builder()
-    	     .proxyConfiguration(proxyConfig
-             .build());
+    	     .proxyConfiguration(proxyConfig.build());
      
          Region region = Region.US_WEST_2;
          ConnectClient connect = ConnectClient.builder()
